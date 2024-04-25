@@ -1,0 +1,10 @@
+com\book\exchange\platform\model\BookResponse.class
+com\book\exchange\platform\model\AuthResponse.class
+com\book\exchange\platform\service\BookService.class
+com\book\exchange\platform\application\RestEasyServices.class
+com\book\exchange\platform\service\AuthenticationService.class
+com\book\exchange\platform\controller\AuthenticationController.class
+com\book\exchange\platform\controller\BookController.class
+com\book\exchange\platform\model\User.class
+com\book\exchange\platform\model\Book.class
+com\book\exchange\platform\model\HelloWorld.class
