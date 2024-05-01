@@ -8,6 +8,15 @@ public class Book {
 	private String genre;
 	private boolean availability;
 	private String operationType;
+	private Provider provider;
+
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
+	}
 
 	public int getId() {
 		return id;

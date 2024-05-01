@@ -6,16 +6,20 @@ import java.util.List;
 
 import com.book.exchange.platform.model.Book;
 import com.book.exchange.platform.model.BookResponse;
+import com.book.exchange.platform.model.Provider;
 
 public class BookService {
 	private int id = 1;
 	private List<Book> bookList = new ArrayList<Book>();
 
-	public BookResponse addBook(Book book) {
+	public BookResponse addBook(Book book, String email) {
 		BookResponse bookResponse = new BookResponse();
 		book.setId(id);
 		bookList.add(book);
 		id++;
+		Provider provider = new Provider();
+		provider.setEmail(email);
+		book.setProvider(provider);
 		bookResponse.setSuccess(true);
 		bookResponse.setMessage("Added book successfully!!");
 		return bookResponse;

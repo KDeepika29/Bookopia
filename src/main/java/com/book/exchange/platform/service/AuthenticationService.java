@@ -7,6 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import com.book.exchange.platform.model.AuthResponse;
 import com.book.exchange.platform.model.User;
+import com.book.exchange.platform.utils.JwtTokenGenerator;
 
 @ApplicationScoped
 public class AuthenticationService {
@@ -31,7 +32,7 @@ public class AuthenticationService {
 			usersList.add(newUser);
 			authResponse.setSuccess(true);
 			authResponse.setMessage("User is registered successfully!!!");
-			authResponse.setToken("abc");
+			authResponse.setToken(JwtTokenGenerator.generateJwtToken(newUser.getEmail(), 3600000));
 
 		}
 		return authResponse;
@@ -51,7 +52,7 @@ public class AuthenticationService {
 		if (userExists) {
 			authResponse.setSuccess(true);
 			authResponse.setMessage("User login is successful!!");
-			authResponse.setToken("abc");
+			authResponse.setToken(JwtTokenGenerator.generateJwtToken(loginUser.getEmail(), 3600000));
 		} else {
 			authResponse.setSuccess(false);
 			authResponse.setMessage("Invalid userName / password");
