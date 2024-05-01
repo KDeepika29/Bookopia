@@ -75,7 +75,7 @@
             <configuration>  
                 <archive>  
                     <manifest>  
-                        <mainClass>com.book.exchange</mainClass>  
+                        <mainClass>com.book.exchange.platform.application</mainClass>  
                     </manifest>  
                 </archive>  
             </configuration>  
