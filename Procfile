@@ -1,1 +1,1 @@
-web: java -war target/webapp-runner.jar
+web: java -war target/bookopia.war
