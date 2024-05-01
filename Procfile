@@ -1,1 +1,1 @@
-web: java -jar target/bookopia.war  com.book.exchange.platform.application
+web: java -jar target/bookopia.war 
