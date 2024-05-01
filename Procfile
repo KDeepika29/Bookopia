@@ -1,1 +1,1 @@
-web: java -war target/bookopia.war
+web: java -jar target/bookopia.war
