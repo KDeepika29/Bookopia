@@ -1,5 +1,8 @@
 package com.book.exchange.platform.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class BookResponse {
 	private boolean isSuccess;
 	private String message;

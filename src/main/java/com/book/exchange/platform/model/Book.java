@@ -1,13 +1,31 @@
 package com.book.exchange.platform.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
 	private int id;
 	private String title;
 	private String author;
 	private String condition;
-	private String genre;
+	@JsonProperty("genre")
+	private List<String> genre;
 	private boolean availability;
 	private String operationType;
+	private Provider provider;
+
+	public Provider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Provider provider) {
+		this.provider = provider;
+	}
 
 	public int getId() {
 		return id;
@@ -49,11 +67,11 @@ public class Book {
 		this.condition = condition;
 	}
 
-	public String getGenre() {
+	public List<String> getGenre() {
 		return genre;
 	}
 
-	public void setGenre(String genre) {
+	public void setGenre(List<String> genre) {
 		this.genre = genre;
 	}
 
