@@ -31,4 +31,7 @@ public class RestEasyServices extends Application {
 	public Set<Object> getSingletons() {
 		return singletons;
 	}
+	  public static void main(String[] args) {
+        // (Optional) Add initialization logic here (e.g., starting a lightweight server)
+    }
 }
