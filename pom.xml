@@ -29,6 +29,11 @@
 			<version>0.6.2</version>
 		</dependency>
 		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 			<version>${cdi-api.version}</version>
@@ -77,26 +82,27 @@
 			<version>0.11.2</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.22</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.0.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<finalName>bookopia</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven
 			defaults (may be moved to parent pom) -->
 			<plugins>
 				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
-				</plugin>
-				<!-- see
-				http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.5.1</version>
+					<version>3.8.0</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
@@ -108,15 +114,58 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>3.2.2</version>
+					<version>3.2.3</version>
+					<configuration>
+						<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+						<warSourceDirectory>WebContent</warSourceDirectory>
+					</configuration>
 				</plugin>
 				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<groupId>com.heroku.sdk</groupId>
+					<artifactId>heroku-maven-plugin</artifactId>
+					<version>3.0.2</version>
+					<configuration>
+						<appName>bookopia123</appName>
+					</configuration>
 				</plugin>
+				<!--<plugin>
+					<groupId>io.swagger.core.v3</groupId>
+					<artifactId>swagger-maven-plugin</artifactId>
+					<version>2.0.9</version>
+					<configuration>
+						<outputFileName>swagger-${version}</outputFileName>
+						<outputPath>
+							${project.build.directory}/bookopia-swaggerspec</outputPath>
+						<outputFormat>JSONANDYAML</outputFormat>
+						<resourcePackages>
+							<package>com.book.exchange.platform.controller</package>
+						</resourcePackages>
+						<prettyPrint>true</prettyPrint>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>compile</phase>
+							<goals>
+								<goal>resolve</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>-->
 				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
+					<groupId>com.garethevans.plugin</groupId>
+					<artifactId>swagger-codegen-maven-plugin</artifactId>
+					<version>2.3.1</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+							<configuration>
+								<inputSpec>src/main/resources/api.yaml</inputSpec>
+								<language>java</language>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>

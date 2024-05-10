@@ -1,5 +1,6 @@
 package com.book.exchange.platform.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class HelloWorld {
 	private String message;
 
